@@ -19,6 +19,7 @@ r = opener.open("http://www.lovoo.com/login_check", "_username=" + inputUsername
 r = opener.open("http://www.lovoo.com/welcome/login")
 
 # Loop to like matches
+count = 1
 while 1 == 1:
     # Take the main match in the page
     try:
@@ -50,7 +51,7 @@ while 1 == 1:
                 print "Code: " + str(e.code) + " - Message: " + e.message
                 break
 
-        print "You just liked " + matchName + ", a beautiful " + matchGender + " of age " + str(matchAge) + " from " + matchLocation
+        print str(count) + ". You just liked " + matchName + ", a beautiful " + matchGender + " of age " + str(matchAge) + " from " + matchLocation
 
     except urllib2.HTTPError, e:
         if e.code == 403:
@@ -63,3 +64,5 @@ while 1 == 1:
             print "The procedure encountered an unknown error."
         print "Message: " + e.message
         break
+    
+    count = count + 1
